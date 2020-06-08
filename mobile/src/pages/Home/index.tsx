@@ -1,14 +1,56 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import { Text, View, ImageBackground, Image, StyleSheet, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 import { Feather as Icon } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+// import RNPickerSelect from 'react-native-picker-select';
+// import axios from 'axios';
 
 const Home = () => {
 
   const [uf, setUf] = useState('');
   const [city, setCity] = useState('');
+
+    // interface IBGEUFResponse {
+  //   sigla: string;
+  // }
+  
+  // interface IBGECityResponse {
+  //   nome: string;
+  // }
+
+  // Feature sendo implementada para listagem de Estados e Cidades consumidas pela API do IBGE
+  
+  // const [selectedUf, setSelectUf] = useState('0');
+  // const [selectedCity, setSelectCity] = useState('0');
+  // const [ufs, setUfs] = useState<string[]>([]);
+  // const [cities, setCities] = useState<string[]>([]);
+
+
+  // useEffect(() => {
+  //   axios.get<IBGEUFResponse[]>('https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome').then(response => {
+  //     const ufInitials = response.data.map(uf => uf.sigla);
+  //     console.log(ufInitials);
+  //     setUfs(ufInitials);
+  //   });
+  // }, []);
+
+  // useEffect(() => {
+  //   axios.get<IBGECityResponse[]>(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${selectedUf}/municipios`).then(response => {
+  //     const cityNames = response.data.map(city => city.nome);
+  //     setCities(cityNames);
+  //   });
+  // }, [selectedUf]);
+
+//   const listUfs = ufs.map(uf =>{
+//     return { label: uf, value: uf }
+// })
+
+// const listCities = cities.map(city =>{
+//   return { label: city, value: city }
+// })
+
 
   const navigation = useNavigation();
   function handleNavigateToPoints() {
@@ -38,7 +80,8 @@ const Home = () => {
         <TextInput style={styles.input} placeholder="Digite a UF" maxLength={2} autoCapitalize="characters" autoCorrect={false} value={uf} onChangeText={text => setUf(text)}/>
         <TextInput style={styles.input} placeholder="Digite a Cidade" value={city} autoCorrect={false} onChangeText={text => setCity(text)}/>
 
-
+        {/* <RNPickerSelect  placeholder={{ label: 'Selecione um Estado', value: 'Selecione um Estado'  }}  onValueChange={(value) => setSelectUf(value)} items={listUfs} />
+        <RNPickerSelect  placeholder={{ label: 'Selecione uma Cidade', value: 'Selecione um Estado'  }} onValueChange={(value) => console.log(value)} items={listCities} /> */}
 
 
         <RectButton style={styles.button} onPress={handleNavigateToPoints}>
